@@ -50,6 +50,7 @@
     "karma-coverage": "^1.1.1",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.0",
+    "karma-webpack": "^2.0.4",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.5.5"
   },

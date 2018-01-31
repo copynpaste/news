@@ -7,9 +7,9 @@ module.exports = {
     },
     devtool: 'source-map',
     plugins: [
-        new UglifyJSPlugin({
-            sourceMap: true
-        })
+        // new UglifyJSPlugin({
+        //     sourceMap: true
+        // })
     ],
     module: {
         rules: [

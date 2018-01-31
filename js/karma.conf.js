@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Thu May 15 2014 04:01:02 GMT+0200 (CEST)
+var webpack = require('webpack');
 
 module.exports = function (config) {
     'use strict';
@@ -16,6 +17,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
+			'node_modules/lodash/dist/lodash.js',
             'node_modules/jquery/dist/jquery.js',
             'node_modules/moment/min/moment-with-locales.js',
             'node_modules/angular/angular.js',
@@ -24,11 +26,13 @@ module.exports = function (config) {
             'node_modules/angular-sanitize/angular-sanitize.js',
             'tests/unit/stubs/App.js',
             'tests/unit/stubs/OC.js',
-            'controller/**/*.js',
-            'filter/**/*.js',
-            'service/**/*.js',
-            'directive/**/*.js',
-            'tests/unit/**/*Spec.js',
+            // 'controller/**/*.js',
+            // 'filter/**/*.js',
+            // 'service/**/*.js',
+            // 'directive/**/*.js',
+			// 'tests/unit/**/*Spec.js',
+			// 'tests/unit/**/AppControllerSpec.js',
+			'tests/unit/**/LoadingSpec.js',
         ],
 
 
@@ -36,6 +40,30 @@ module.exports = function (config) {
         exclude: [
 
         ],
+
+		preprocessors: {
+			'tests/unit/stubs/App.js': ['webpack']
+		},
+		webpack: require('./webpack.config.js'),
+		// webpack: {
+		// 	devtool: 'inline-source-map',
+		// 	module: {
+		// 		rules: [
+		// 			{
+		// 				test: /\.js$/,
+		// 				exclude: /node_modules/,
+		// 				use: {
+		// 					loader: 'babel-loader',
+		// 					options: {
+		// 						'plugins': [
+		// 							['angularjs-annotate', { 'explicitOnly' : true}]
+		// 						]
+		// 					}
+		// 				}
+		// 			}
+		// 		]
+		// 	}
+		// },
 
         coverageReporter: {
             type: 'lcovonly',
@@ -71,7 +99,7 @@ module.exports = function (config) {
         // start these browsers
         // available browser launchers:
         // https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Firefox'],
+        browsers: ['Chrome'],
 
 
         // Continuous Integration mode

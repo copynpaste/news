@@ -7,4 +7,11 @@
  * @author Bernhard Posselt <dev@bernhard-posselt.com>
  * @copyright Bernhard Posselt 2012, 2014
  */
-window.app = angular.module('News', ['ngRoute', 'ngSanitize', 'ngMock']);
+//angular
+import angular from 'angular';
+import News from '../../../app/bootstrap';
+
+//angular modules
+import 'angular-mocks';
+
+window.app = angular.module('News', [News, 'ngMock']);

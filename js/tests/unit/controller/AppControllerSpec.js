@@ -13,11 +13,11 @@ describe('AppController', function () {
     var controller,
         location;
 
-    beforeEach(module('News', function ($provide) {
+    beforeEach(module('News', ['$provide', function ($provide) {
         $provide.value('BASE_URL', 'base');
-    }));
+    }]));
 
-    beforeEach(inject(function ($controller) {
+    beforeEach(inject(['$controller', function ($controller) {
         location = {
             path: jasmine.createSpy('path')
         };
@@ -25,12 +25,12 @@ describe('AppController', function () {
         controller = $controller('AppController', {
             $location: location
         });
-    }));
+    }]));
 
 
-    it('should expose Loading', inject(function (Loading) {
+    it('should expose Loading', inject(['Loading', function (Loading) {
         expect(controller.loading).toBe(Loading);
-    }));
+    }]));
 
 
     it('should expose set firstrun if no feeds and folders', function () {
@@ -38,19 +38,18 @@ describe('AppController', function () {
     });
 
 
-    it('should expose set firstrun if feeds', inject(function (FeedResource) {
+    it('should expose set firstrun if feeds', inject(['FeedResource', function (FeedResource) {
         FeedResource.add({url: 'test'});
 
         expect(controller.isFirstRun()).toBe(false);
-    }));
+    }]));
 
 
-    it('should expose set firstrun if folders', inject(
-    function (FolderResource) {
+    it('should expose set firstrun if folders', inject(['FolderResource', function (FolderResource) {
         FolderResource.add({name: 'test'});
 
         expect(controller.isFirstRun()).toBe(false);
         expect(location.path).not.toHaveBeenCalled();
-    }));
+    }]));
 
 });

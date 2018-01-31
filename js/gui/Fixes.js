@@ -19,7 +19,9 @@
     // will cause new articles being marked as read
     window.addEventListener('beforeunload', function () {
         var content = document.querySelector('#app-content');
-        content.scrollTo(0, 0);
+        if (content) {
+			content.scrollTo(0, 0);
+		}
     });
 
 })(window, document);
